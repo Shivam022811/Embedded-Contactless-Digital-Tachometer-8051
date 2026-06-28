@@ -10,17 +10,13 @@ The calculated RPM value is then displayed on a 16×2 LCD in real time. The coun
 
 ## RPM Calculation
 
-For a single reflective strip attached to the rotating object:
+For one reflective strip:
 
-\[
-\text{RPM} = \text{Pulse Count} \times 60
-\]
+RPM = Pulse Count × 60
 
-For multiple reflective strips:
+For N reflective strips:
 
-\[
-\text{RPM} = \frac{\text{Pulse Count} \times 60}{\text{Number of Reflective Strips}}
-\]
+RPM = (Pulse Count × 60) / N
 
 ## Advantages
 
