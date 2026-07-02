@@ -1,27 +1,9 @@
 # Working Principle
 
-The Contactless Digital Tachometer measures the rotational speed (RPM) of a rotating object without physical contact using an infrared (IR) sensing mechanism. A reflective strip is attached to the rotating shaft, and an IR sensor module consisting of an IR LED and an IR receiver is positioned to face the rotating surface.
+The Embedded Contactless Digital Tachometer measures the rotational speed (RPM) of a rotating object without physical contact by utilizing an Infrared (IR) sensing mechanism. An IR LED continuously emits infrared light toward the rotating object, while an IR receiver detects the reflected or interrupted light generated during each revolution.
 
-The IR LED continuously emits infrared light toward the rotating object. Whenever the reflective strip passes in front of the sensor, it reflects the emitted light back to the IR receiver, generating a digital pulse. Each pulse corresponds to one complete revolution of the rotating object.
+Each detected pulse is captured by the AT89S52 (8051) microcontroller through its timer/counter peripheral. The microcontroller counts the number of pulses received within a predefined sampling interval. Using the measured pulse count and the known number of pulses per revolution (PPR), the firmware computes the rotational speed in revolutions per minute (RPM).
 
-The pulse signal is provided to the AT89S52 (8051) microcontroller, where the timer/counter peripheral counts the number of pulses detected during a fixed sampling interval. After the sampling period, the microcontroller calculates the rotational speed using the pulse count and converts it into Revolutions Per Minute (RPM).
+The calculated RPM value is displayed on a 16×2 LCD, providing continuous real-time speed monitoring. The firmware also performs basic system diagnostics, including overspeed detection and sensor fault monitoring, ensuring reliable operation under varying operating conditions.
 
-The calculated RPM value is then displayed on a 16×2 LCD in real time. The counting process repeats continuously, allowing the system to provide updated speed measurements while the object remains in motion.
-
-## RPM Calculation
-
-For one reflective strip:
-
-RPM = Pulse Count × 60
-
-For N reflective strips:
-
-RPM = (Pulse Count × 60) / N
-
-## Advantages
-
-- Contactless speed measurement
-- Simple and low-cost implementation
-- Accurate real-time RPM monitoring
-- Easy integration with embedded systems
-- Suitable for educational and industrial monitoring applications
+The complete measurement process operates continuously in a closed loop, enabling stable and accurate RPM measurement suitable for laboratory demonstrations, industrial monitoring, and embedded system applications.
