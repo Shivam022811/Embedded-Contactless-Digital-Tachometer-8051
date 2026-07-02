@@ -1,83 +1,31 @@
 # Methodology
 
-## Overview
+The development of the Embedded Contactless Digital Tachometer followed a structured embedded system design approach consisting of hardware design, firmware development, simulation, verification, and documentation.
 
-The Contactless Digital Tachometer is designed to measure the rotational speed (RPM) of a rotating object without physical contact. The system utilizes an infrared (IR) sensor to detect each revolution and an AT89S52 (8051) microcontroller to process the detected pulses. The firmware is developed in Embedded C using Keil µVision, while the complete system is verified through Proteus simulation.
+## 1. System Requirement Analysis
 
----
+The functional requirements were identified to achieve contactless rotational speed measurement using an IR sensor and an AT89S52 (8051) microcontroller with real-time LCD display.
 
-## Methodology
+## 2. System Architecture Design
 
-### 1. System Initialization
+A complete system architecture was developed consisting of the IR sensing module, AT89S52 microcontroller, timer/counter subsystem, RPM calculation module, system monitoring module, and LCD interface.
 
-The microcontroller initializes the system peripherals, including the timer/counter module and the 16×2 LCD display. The LCD is prepared to display the calculated RPM values.
+## 3. Hardware Design
 
----
+The hardware configuration was designed by interfacing the IR sensor module and LCD display with the AT89S52 microcontroller while incorporating the required clock oscillator, reset circuitry, and power supply connections.
 
-### 2. Pulse Generation
+## 4. Firmware Development
 
-A reflective strip is attached to the rotating object. As the object rotates, the IR LED continuously emits infrared light toward its surface. Whenever the reflective strip passes in front of the IR sensor, the reflected light is detected by the IR receiver, generating a digital pulse.
+The firmware was developed in Embedded C using a modular programming approach. Individual modules were designed for timer configuration, pulse acquisition, RPM computation, LCD interfacing, and system monitoring.
 
-For simulation, a pulse generator in Proteus is used to emulate the IR sensor output.
+## 5. System Simulation
 
----
+The complete embedded system was functionally verified using SimulIDE to validate pulse detection, timer operation, RPM calculation, and LCD output under different operating conditions.
 
-### 3. Pulse Counting
+## 6. Performance Verification
 
-The generated pulses are provided to the external counter input of the AT89S52 microcontroller. The timer/counter module counts the number of pulses received during a fixed sampling interval (typically one second).
+Simulation results were analyzed to verify correct pulse counting, stable RPM calculation, LCD display accuracy, and overall firmware functionality.
 
----
+## 7. Documentation
 
-### 4. RPM Calculation
-
-After the sampling interval expires, the microcontroller calculates the rotational speed using the measured pulse count.
-
-For a single reflective strip:
-
-RPM = Pulse Count × 60
-
-For multiple reflective strips:
-
-RPM = (Pulse Count × 60) / Number of Reflective Strips
-
----
-
-### 5. Display of Results
-
-The calculated RPM value is displayed on the 16×2 LCD. The display is refreshed after every sampling interval, providing continuous real-time speed monitoring.
-
----
-
-### 6. Continuous Monitoring
-
-After updating the display, the pulse counter is reset, and the measurement cycle repeats continuously to ensure uninterrupted RPM monitoring.
-
----
-
-## Software Workflow
-
-1. Initialize the microcontroller and LCD.
-2. Configure the timer/counter peripheral.
-3. Detect incoming pulses from the IR sensor.
-4. Count pulses during the sampling interval.
-5. Calculate RPM.
-6. Display RPM on the LCD.
-7. Reset the pulse counter.
-8. Repeat the measurement process.
-
----
-
-## Simulation Environment
-
-- **Microcontroller:** AT89S52 (8051)
-- **Programming Language:** Embedded C
-- **Compiler:** Keil µVision
-- **Simulation Software:** Proteus Design Suite
-- **Display:** 16×2 LCD
-- **Sensor:** IR LED and IR Receiver (simulated using a pulse generator)
-
----
-
-## Outcome
-
-The developed system provides an accurate and contactless method for measuring rotational speed. Simulation results verify the functionality of pulse detection, RPM calculation, and real-time LCD display, demonstrating the effectiveness of the embedded system design.
+Technical documentation including block diagrams, software flowcharts, circuit diagrams, methodology, working principle, and source code documentation was prepared to ensure project reproducibility and maintainability.
