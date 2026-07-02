@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Build files
+*.ihx
+*.lk
+*.lst
+*.map
+*.mem
+*.rel
+*.rst
+*.sym
+*.asm
+*.hex
+*.o
+
+# Temporary files
+*.tmp
