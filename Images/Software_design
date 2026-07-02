@@ -1,0 +1,20 @@
+# Software Design
+
+## Software Modules
+
+The firmware is divided into independent software modules.
+
+- System Initialization
+- Timer Configuration
+- IR Sensor Interface
+- Pulse Counter
+- RPM Calculation
+- LCD Driver
+- System Monitoring
+- Main Control Loop
+
+## Software Operation
+
+The firmware initializes all peripherals before entering an infinite execution loop.
+
+During each sampling interval, the firmware counts sensor pulses, calculates RPM, updates the LCD, performs diagnostic checks, and prepares the system for the next measurement cycle.
