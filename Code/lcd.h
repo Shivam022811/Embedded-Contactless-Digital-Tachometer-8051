@@ -1,0 +1,23 @@
+/******************************************************************************
+ * Project     : Embedded Contactless Digital Tachometer
+ * File Name   : lcd.h
+ * Author      : Shivam Kumar
+ * Description : LCD Driver Header File
+ ******************************************************************************/
+
+#ifndef LCD_H
+#define LCD_H
+
+#include "config.h"
+#include "delay.h"
+
+/* LCD Driver Functions */
+
+void LCD_Init(void);
+void LCD_Command(unsigned char command);
+void LCD_Data(unsigned char data);
+void LCD_String(char *string);
+void LCD_Clear(void);
+void LCD_SetCursor(unsigned char row, unsigned char column);
+
+#endif
