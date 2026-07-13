@@ -5,9 +5,14 @@
  * Target  : AT89S52
  * Compiler: SDCC
  * Version : 1.0
+ * Description : Determines the operating status of the tachometer based on RPM.
  ******************************************************************************/
 
 #include "status.h"
+
+/* Status Limits */
+
+#define MAX_RPM 5000
 
 /* Private Status Variable */
 
@@ -17,11 +22,11 @@ static SystemStatus CurrentStatus = STATUS_READY;
  * Update System Status
  ******************************************************************************/
 
- #define MAX_RPM 5000
-
 void Status_Update(void)
 {
     unsigned int rpm;
+
+/* Read latest calculated RPM */
 
     rpm = RPM_GetValue();
 
@@ -29,7 +34,7 @@ void Status_Update(void)
     {
         CurrentStatus = STATUS_STOPPED;
     }
-    else if(rpm > 5000)
+    else if(rpm > MAX_RPM)
     {
         CurrentStatus = STATUS_OVERSPEED;
     }

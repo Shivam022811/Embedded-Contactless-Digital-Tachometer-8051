@@ -5,9 +5,14 @@
  * Target  : AT89S52
  * Compiler: SDCC
  * Version : 1.0
+ * Description : Calculates rotational speed (RPM) from sensor pulse count.
  ******************************************************************************/
 
 #include "rpm.h"
+
+/* RPM Calculation Parameters */
+
+#define RPM_SAMPLE_TIME_SEC    1
 
 /* Global RPM Variable */
 
@@ -16,10 +21,9 @@ static unsigned int RPM_Value = 0;
 /******************************************************************************
  * Calculate RPM
  ******************************************************************************/
-#define SAMPLE_TIME_SEC    1
 void RPM_Update(void)
 {
-    RPM_Value = Sensor_GetCount() * 60 / SAMPLE_TIME_SEC;
+    RPM_Value = Sensor_GetCount() * 60 / RPM_SAMPLE_TIME_SEC;
     Sensor_ResetCount();
 }
 

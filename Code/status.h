@@ -5,6 +5,7 @@
  * Target  : AT89S52
  * Compiler: SDCC
  * Version : 1.0
+ * Description : Provides system status definitions and function declarations.
  ******************************************************************************/
 
 #ifndef STATUS_H

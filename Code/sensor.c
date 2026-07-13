@@ -5,13 +5,15 @@
  * Target  : AT89S52
  * Compiler: SDCC
  * Version : 1.0
+ * Description : IR sensor driver for pulse counting using External Interrupt 0.
  ******************************************************************************/
 
 #include "sensor.h"
 
 /* Global Pulse Counter */
+/* Updated inside ISR */
 
-volatile unsigned int Pulse_Count = 0;
+static volatile unsigned int Pulse_Count = 0;
 
 /******************************************************************************
  * Initialize IR Sensor
@@ -19,7 +21,7 @@ volatile unsigned int Pulse_Count = 0;
 
 void Sensor_Init(void)
 {
-    IT0 = 1;      // Falling Edge Trigger
+    IT0 = 1;      // Configure INT0 for falling-edge triggering
     EX0 = 1;      // Enable External Interrupt 0
     EA  = 1;      // Enable Global Interrupt
 }
@@ -43,7 +45,7 @@ unsigned int Sensor_GetCount(void)
 }
 
 /******************************************************************************
- * External Interrupt 0 ISR
+ * External Interrupt 0 Service Routine
  ******************************************************************************/
 
 void External0_ISR(void) __interrupt(0)

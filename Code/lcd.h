@@ -1,10 +1,14 @@
 /******************************************************************************
- * Project     : Embedded Contactless Digital Tachometer
- * File Name   : lcd.h
- * Author      : Shivam Kumar
- * Description : LCD Driver Header File
+ * Project  : Embedded Contactless Digital Tachometer
+ * File     : lcd.c
+ * Author   : Shivam Kumar
+ * Target   : AT89S52
+ * Compiler : SDCC
+ * Version  : 1.0
+ * 
+ * Description:
+ * LCD Driver Header File
  ******************************************************************************/
-
 #ifndef LCD_H
 #define LCD_H
 

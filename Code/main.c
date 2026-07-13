@@ -4,6 +4,7 @@
  * Author  : Shivam Kumar
  * Target  : AT89S52
  * Compiler: SDCC
+ * Description : Main application entry point and system initialization.
  ******************************************************************************/
 
 #include "config.h"
@@ -20,28 +21,31 @@
 
 void System_Init(void)
 {
-    LCD_Init();
+    LCD_Init();     /* Initialize LCD Module */
 
-    Timer0_Init();
+    Timer0_Init();  /* Initialize Timer0 */
 
-    Sensor_Init();
+    Sensor_Init();  /* Initialize IR Sensor */
 }
 
 void main(void)
 {
-    System_Init();
 
-    LCD_Clear();
+/* Display Startup Message */
 
-    LCD_String("Digital");
+LCD_Clear();
 
-    LCD_SetCursor(1,0);
+LCD_String("Digital");
 
-    LCD_String("Tachometer");
+LCD_SetCursor(1,0);
 
-    Delay_ms(2000);
+LCD_String("Tachometer");
 
-    LCD_Clear();
+Delay_ms(2000);
+
+/* Clear Display */
+
+LCD_Clear();
 
     while(1)
     {

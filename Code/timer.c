@@ -5,6 +5,7 @@
  * Target  : AT89S52
  * Compiler: SDCC
  * Version : 1.0
+ * Description : Timer0 driver for delay generation and timing operations.
  ******************************************************************************/
 
 #include "timer.h"
@@ -45,13 +46,21 @@ void Timer0_DelayMs(unsigned int ms)
 {
     while(ms--)
     {
+        /* Reload value for 1 ms delay
+         * Crystal Frequency : 11.0592 MHz */
+
+        TH0 = 0xFC;
+        TL0 = 0x66;
         TH0 = 0xFC;
         TL0 = 0x66;
 
         TF0 = 0;       // Clear overflow flag
         TR0 = 1;       // Start timer
 
-        while(TF0 == 0);
+        while(TF0 == 0)
+        {
+            ;
+        }
 
         TR0 = 0;       // Stop timer
         TF0 = 0;       // Clear overflow flag

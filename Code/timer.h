@@ -1,12 +1,12 @@
 /******************************************************************************
- * Project : Embedded Contactless Digital Tachometer
- * File    : timer.h
- * Author  : Shivam Kumar
- * Target  : AT89S52
- * Compiler: SDCC
- * Version : 1.0
+ * Project     : Embedded Contactless Digital Tachometer
+ * File        : timer.c
+ * Author      : Shivam Kumar
+ * Target      : AT89S52
+ * Compiler    : SDCC
+ * Version     : 1.0
+ * Description : Function prototypes for Timer0 initialization and delay routines.
  ******************************************************************************/
-
 #ifndef TIMER_H
 #define TIMER_H
 

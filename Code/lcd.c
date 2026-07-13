@@ -1,10 +1,14 @@
 /******************************************************************************
- * Project     : Embedded Contactless Digital Tachometer
- * File Name   : lcd.c
- * Author      : Shivam Kumar
- * Description : LCD Driver Source File
+ * Project  : Embedded Contactless Digital Tachometer
+ * File     : lcd.c
+ * Author   : Shivam Kumar
+ * Target   : AT89S52
+ * Compiler : SDCC
+ * Version  : 1.0
+ *
+ * Description:
+ * LCD driver implementation for 16x2 HD44780 display (4-bit mode).
  ******************************************************************************/
-
 #include "lcd.h"
 
 /* Internal Functions */
@@ -70,7 +74,9 @@ void LCD_Data(unsigned char data)
 
     Delay_ms(2);
 }
-/*rs=1 (character data),rs=0 (commamd)*/
+/* RS = 0 : Command Register
+ * RS = 1 : Data Register
+ */
 
 /******************************************************************************
  * Initialize LCD
@@ -119,12 +125,14 @@ void LCD_Clear(void)
  * Display String
  ******************************************************************************/
 
-void LCD_String(char *string)
+if(string == 0)
 {
-    while(*string)
-    {
-        LCD_Data(*string++);
-    }
+    return;
+}
+
+while(*string)
+{
+    LCD_Data(*string++);
 }
 
 /******************************************************************************
@@ -133,7 +141,7 @@ void LCD_String(char *string)
 
 void LCD_Integer(unsigned int number)
 {
-    unsigned char digits[5];
+    unsigned char digits[5];    unsigned char digits[5];   /* Maximum 5 digits for unsigned int */
     signed char i = 0;
 
     if(number == 0)
