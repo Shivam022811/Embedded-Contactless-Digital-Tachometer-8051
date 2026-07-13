@@ -126,6 +126,33 @@ void LCD_String(char *string)
         LCD_Data(*string++);
     }
 }
+
+/******************************************************************************
+ * Display Integer on LCD
+ ******************************************************************************/
+
+void LCD_Integer(unsigned int number)
+{
+    unsigned char digits[5];
+    signed char i = 0;
+
+    if(number == 0)
+    {
+        LCD_Data('0');
+        return;
+    }
+
+    while(number > 0)
+    {
+        digits[i++] = (number % 10) + '0';
+        number /= 10;
+    }
+
+    while(i > 0)
+    {
+        LCD_Data(digits[--i]);
+    }
+}
 /******************************************************************************
  * Set LCD Cursor Position
  ******************************************************************************/
