@@ -19,5 +19,5 @@ void LCD_Data(unsigned char data);
 void LCD_String(char *string);
 void LCD_Clear(void);
 void LCD_SetCursor(unsigned char row, unsigned char column);
-
+void LCD_Integer(unsigned int number);
 #endif
