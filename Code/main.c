@@ -29,7 +29,7 @@ void System_Init(void)
     Sensor_Init();  /* Initialize IR Sensor */
 
     Buzzer_Init();  /* Initialize Buzzer */
-    
+
 }
 
 void main(void)
@@ -52,7 +52,57 @@ Delay_ms(2000);
 LCD_Clear();
 
     while(1)
-    {
+{
+    /* Sample Every 1 Second */
 
+    Timer0_DelayMs(1000);
+
+    /* Calculate RPM */
+
+    RPM_Update();
+
+    /* Update System Status */
+
+    Status_Update();
+
+    /* Update LCD */
+
+    LCD_Clear();
+
+    LCD_String("RPM:");
+
+    LCD_Integer(RPM_GetValue());
+
+    LCD_SetCursor(1,0);
+
+    switch(Status_Get())
+    {
+        case STATUS_READY:
+            LCD_String("READY");
+            break;
+
+        case STATUS_RUNNING:
+            LCD_String("RUNNING");
+            break;
+
+        case STATUS_STOPPED:
+            LCD_String("STOPPED");
+            break;
+
+        case STATUS_OVERSPEED:
+            LCD_String("OVERSPEED");
+            break;
     }
+
+    /* Control Buzzer */
+
+    if(Status_Get() == STATUS_OVERSPEED)
+    {
+        Buzzer_On();
+    }
+    else
+    {
+        Buzzer_Off();
+    }
+}
 }
