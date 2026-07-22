@@ -12,7 +12,7 @@
 
 /* Status Limits */
 
-#define MAX_RPM 5000
+#define MAX_RPM 5000U
 
 /* Private Status Variable */
 

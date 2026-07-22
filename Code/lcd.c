@@ -125,14 +125,17 @@ void LCD_Clear(void)
  * Display String
  ******************************************************************************/
 
-if(string == 0)
+void LCD_String(char *string)
 {
-    return;
-}
+    if(string == 0)
+    {
+        return;
+    }
 
-while(*string)
-{
-    LCD_Data(*string++);
+    while(*string)
+    {
+        LCD_Data(*string++);
+    }
 }
 
 /******************************************************************************
@@ -141,7 +144,7 @@ while(*string)
 
 void LCD_Integer(unsigned int number)
 {
-    unsigned char digits[5];    unsigned char digits[5];   /* Maximum 5 digits for unsigned int */
+    unsigned char digits[5];   /* Maximum 5 digits for unsigned int */
     signed char i = 0;
 
     if(number == 0)

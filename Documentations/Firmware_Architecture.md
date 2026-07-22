@@ -2,6 +2,21 @@
 
 The firmware follows a modular architecture to improve readability, maintainability, and future scalability.
 
+                 main.c
+                    │
+        ┌───────────┼───────────┐
+        │           │           │
+     LCD Driver   Timer      Sensor ISR
+                        │
+                        ▼
+                  RPM Calculation
+                        │
+                        ▼
+                  Status Update
+                        │
+                        ▼
+                 LCD Display Update
+
 ## Source Files
 
 ```
