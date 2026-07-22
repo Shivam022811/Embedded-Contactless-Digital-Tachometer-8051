@@ -14,6 +14,7 @@
 #include "sensor.h"
 #include "rpm.h"
 #include "status.h"
+#include "buzzer.h" 
 
 /******************************************************************************
  * Initialize Complete System
@@ -26,6 +27,9 @@ void System_Init(void)
     Timer0_Init();  /* Initialize Timer0 */
 
     Sensor_Init();  /* Initialize IR Sensor */
+
+    Buzzer_Init();  /* Initialize Buzzer */
+    
 }
 
 void main(void)
